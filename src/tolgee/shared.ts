@@ -17,7 +17,7 @@ export function TolgeeBase() {
     tolgee.use(BackendFetch({
       prefix: 'https://tolgee.voov.cc/v2/projects/4/translations',
       headers: {
-        'Tolgee-Api-Key': apiKey || '',
+        'X-API-Key': apiKey || '',
       }
     }));
     tolgee.use(DevTools());
