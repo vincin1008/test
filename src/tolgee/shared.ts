@@ -1,5 +1,6 @@
 import { FormatIcu } from '@tolgee/format-icu';
-import { DevTools, Tolgee, BackendFetch } from '@tolgee/web';
+import { DevTools, Tolgee } from '@tolgee/web';
+import { BackendFetch } from "@tolgee/react"
 
 const apiKey = process.env.NEXT_PUBLIC_TOLGEE_API_KEY_MAIN;
 const apiUrl = process.env.NEXT_PUBLIC_TOLGEE_API_URL_MAIN;
