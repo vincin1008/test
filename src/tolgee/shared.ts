@@ -15,11 +15,11 @@ export function TolgeeBase() {
   // BackendFetch and DevTools only work in browser environment
   if (typeof window !== 'undefined') {
     tolgee.use(BackendFetch({
-      prefix: 'https://tolgee.voov.cc/v2/projects/4/translations',
+      prefix: '',
       headers: {
         'X-API-Key': apiKey || '',
       },
-      getPath: ({ language }) => `/${language}`,
+      getPath: ({ language }) => `https://tolgee.voov.cc/v2/projects/4/translations/${language}`,
     }));
     tolgee.use(DevTools());
   }
