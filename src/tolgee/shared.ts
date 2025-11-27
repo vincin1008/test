@@ -1,6 +1,5 @@
 import { FormatIcu } from '@tolgee/format-icu';
-import { DevTools, Tolgee } from '@tolgee/web';
-import { BackendFetch } from "@tolgee/react"
+import { BackendFetch, DevTools, Tolgee } from '@tolgee/web';
 
 const apiKey = process.env.NEXT_PUBLIC_TOLGEE_API_KEY_MAIN;
 const apiUrl = process.env.NEXT_PUBLIC_TOLGEE_API_URL_MAIN;
@@ -10,11 +9,16 @@ export const ALL_LANGUAGES = ['en', 'cs', 'de', 'fr'];
 export const DEFAULT_LANGUAGE = 'en';
 
 export function TolgeeBase() {
-  return Tolgee()
-    .use(FormatIcu())
-    .use(BackendFetch())
-    .use(DevTools())
-    .updateDefaults({
+  const tolgee = Tolgee()
+    .use(FormatIcu());
+  
+  // BackendFetch and DevTools only work in browser environment
+  if (typeof window !== 'undefined') {
+    tolgee.use(BackendFetch());
+    tolgee.use(DevTools());
+  }
+  
+  return tolgee.updateDefaults({
       apiKey,
       apiUrl,
       fallbackLanguage: 'en',
