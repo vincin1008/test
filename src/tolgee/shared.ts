@@ -28,11 +28,12 @@ export function TolgeeBase() {
       apiKey,
       apiUrl,
       fallbackLanguage: 'en',
-      staticData: {
+      // Only use staticData on server side, let BackendFetch handle client side
+      staticData: typeof window === 'undefined' ? {
         en: () => import('../../messages/en.json'),
         cs: () => import('../../messages/cs.json'),
         de: () => import('../../messages/de.json'),
         fr: () => import('../../messages/fr.json'),
-      },
+      } : undefined,
     });
 }
