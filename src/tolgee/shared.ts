@@ -18,7 +18,8 @@ export function TolgeeBase() {
       prefix: 'https://tolgee.voov.cc/v2/projects/4/translations',
       headers: {
         'X-API-Key': apiKey || '',
-      }
+      },
+      getPath: ({ language }) => `/${language}`,
     }));
     tolgee.use(DevTools());
   }
